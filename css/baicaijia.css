@@ -1,0 +1,25 @@
+#nav {
+  overflow: hidden;
+}
+#nav > ul > li {
+  float: left;
+  padding: 0 10px;
+}
+#nav > ul > li > a {
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+}
+#nav > ul > li.active > a {
+  color: red;
+  border-bottom: 1px solid red;
+}
+#baicaijiaProduct > .media {
+  background-color: #fff;
+}
+#baicaijiaProduct > .media > .media-left img {
+  width: 150px;
+}
+#baicaijiaProduct > .media-body p {
+  margin: 0;
+}

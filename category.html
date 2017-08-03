@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+	/>
+	<title>分类页面</title>
+	<!--引入bootstrap的样式文件-->
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+	<!--引入less文件-->
+	<link rel="stylesheet/less" href="css/base.less" />
+	<link rel="stylesheet/less" href="css/category1.less" />
+	<!--引入less.js文件用于翻译less文件-->
+	<script src="lib/less/less.js"></script>
+</head>
+
+<body>
+	<!--  ==========  -->
+	<!--  = header模块 =  -->
+	<!--  ==========  -->
+	<header id="top">
+		<a href="index1.html">
+				<img src="img/header_logo.png" class="header_logo" alt="" />
+			</a>
+		<a href="javascript:;">
+				<img src="img/header_app.png" class="header_app" alt="" />
+			</a>
+	</header>
+	<!--  ==========  -->
+	<!--  = search模块 =  -->
+	<!--  ==========  -->
+	<div id="search">
+		<form action="">
+			<input type="search" placeholder="请输入您想比价的商品" />
+			<input type="submit" value="搜索" onclick="return false;" />
+		</form>
+	</div>
+	<!--  ==========  -->
+	<!--  = category模块 =  -->
+	<!--  ==========  -->
+	<div id="category">
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+						<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						电脑
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-xs-4"><a href="javascript:;">电脑</a></div>
+								<div class="col-xs-4"><a href="javascript:;">电脑</a></div>
+								<div class="col-xs-4"><a href="javascript:;">电脑</a></div>
+								<div class="col-xs-4"><a href="javascript:;">电脑</a></div>
+								<div class="col-xs-4"><a href="javascript:;">电脑</a></div>
+								<div class="col-xs-4"><a href="javascript:;">电脑</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!--  ==========  -->
+		<!--  = footer模块 =  -->
+		<!--  ==========  -->
+		<footer>
+			<div class="register container-fluid">
+				<div class="row">
+					<div class="col-xs-4">
+						<a href="javascript:;">登录</a>
+					</div>
+					<div class="col-xs-4">
+						<a href="javascript:;">注册</a>
+					</div>
+					<div class="col-xs-4">
+						<a href="#top">
+							<img src="img/top.jpg" alt="" /> 返回顶部
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="app-download">
+				<a href="javascript:;" class="mobileApp">手机APP下载</a>
+				<a href="javascript:;">慢慢买手机版</a>
+				<span>--掌上比价平台</span>
+			</div>
+			<div class="link">
+				<a href="javascript:;">http://m.manmanbuy.com</a>
+			</div>
+		</footer>
+		<!--在bootstrap.js之前引入jquery.js,因为bootstrap依赖于jquery库-->
+		<script src="lib/jquery/jquery.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.js"></script>
+		<!--引入artTemplate模板 -->
+		<script src='./js/template.js'></script>
+		<!--引入category页面js文件-->
+		<script src='./js/category.js'></script>
+
+		<script type='text/html' id='categoryTemp'>
+			{{if result}}
+			{{each result as value index}}
+			<div class="panel panel-default">
+				<!-- <div class="panel-heading" role="tab" id="headingOne"> -->
+				{{#'<div class="panel-heading" role="tab" id="heading'+index+'" titleId='+value.titleId+'>'}}
+					<h4 class="panel-title">
+						{{#'<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse'+index+'" aria-expanded="true" aria-controls="collapse'+index+'">'}}
+						{{value.title}}
+						</a>
+					</h4>
+				</div>
+				  {{#'<div id="collapse'+index+'" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading'+index+'">'}}
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row">
+								
+							</div>
+						</div>
+					</div>
+				</div>  
+			</div>
+			{{/each}}
+			{{/if}}
+		</script>
+		<script type='text/html' id='getcategoryTemp'>
+			{{if result}}
+			{{each result as value index}}
+				<div class="col-xs-4">
+					<a href="productList.html?category={{value.category}}&categoryId={{value.categoryId}}">{{value.category}}</a>
+				</div>
+			{{/each}}
+			{{/if}}
+		</script>
+		
+</body>
+
+</html>

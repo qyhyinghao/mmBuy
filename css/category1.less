@@ -1,0 +1,25 @@
+@baseColor:#FF841D;
+@backgroundColor:#F2F2F2;
+@borderBottome:1px solid #E6E6E6;
+#category{
+    >.panel-group{
+        .panel{
+            margin-top: 0px;
+        }
+        .panel-body{
+            padding:0px;
+            .row{
+                >div{
+                    padding-top:10px;
+                    padding-bottom: 10px;
+                    text-align: center;
+                    border-bottom:@borderBottome;
+                    border-right:@borderBottome;
+                    &:nth-of-type(3n){
+                        border-right:0;
+                    }
+                }
+            }
+        }
+    }
+}

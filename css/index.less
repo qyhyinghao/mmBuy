@@ -1,0 +1,171 @@
+@baseColor:#FF841D;
+@backgroundColor:#F2F2F2;
+@borderBottome:1px solid #E6E6E6;
+/*items模块开始*/
+#items{
+    padding:10px;
+    background-color: #fff;
+    .row{
+        
+        >div{
+            >a{
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+                display: block;
+                >img{
+                    width:50px;
+                }
+                >p{
+                    font-size: 12px;
+                    line-height: 24px;
+                    margin-bottom: 0;     
+                }
+            }
+            
+            &:nth-last-of-type(-n+4){
+                display: none;
+                //background-color: red;
+            }
+        }
+    }
+}
+/*items模块结束*/
+
+/*recommend模块开始*/
+#recommend{
+    margin-top: 10px;
+    >.recommend-title{
+        height: 50px;
+        padding:0 10px;
+        background-color: @baseColor;
+        >h4{
+            float: left;
+            height: 100%;
+            line-height: 50px;
+            margin:0px;
+            font-size: 20px;
+            font-weight: 900;
+            color:#fff;
+        }
+        >img{
+            margin:15px 0px;
+            height: 20px;
+            float: right;
+        }
+    }
+    >.recommend-list{
+        //#FF6C00
+        margin:0 auto;
+        width: 80%;
+        @media screen and (max-width:768px){
+            width:100%;
+        }
+        >.recommend-item{
+            border-bottom:@borderBottome;
+            padding:10px;
+            background-color: #fff;
+            margin-top: 0px;
+            >.media-left{
+                
+                >a{
+                    >img{
+                        width: 150px;
+                    }
+                }
+            }
+            >.media-body{
+                >a{
+                    display: block;
+                    position: relative;
+                    height: 150px;
+                    >h4{
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 24px;
+                        >span{
+                            color:#FF6C00;
+                        }
+                    }
+                    >.media-from{
+                        position: absolute;
+                        width: 100%;
+                        left:0px;
+                        bottom:20px;
+                        color:#B2B2B2;
+                        padding-right: 20px;
+                        height: 30px;
+                        line-height: 30px;
+                        >.from{
+                            float: left;
+                            
+                        }
+                        >.comment{
+                            float: right;
+                            font-size: 24px;
+                        }
+                        >.comment-count{
+                            float: right;
+                            font-size: 14px;
+                        }
+                        
+                        
+                    }
+                }
+            }
+        }
+    }
+    >.recommend-more{
+        width: 100%;
+        padding:10px 10px 20px;
+        
+        >a{
+            display: block;
+            //width: 100%;
+            line-height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+            background-color: red;
+            //margin:10px 10px 20px 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            text-align: center;
+            color:#5A5A5A;
+            
+            background-color: #FAFAFA;
+            >span{
+                font-family: simsun;
+            }
+        }
+            
+    }
+    
+}
+/*recommend模块结束*/
+/*Ranking模块开始*/
+#Ranking{
+    .Ranking-title{
+        height: 50px;
+        padding:0 10px;
+        background-color: @baseColor;
+        >h4{
+            float: left;
+            height: 100%;
+            line-height: 50px;
+            margin:0px;
+            font-size: 20px;
+            font-weight: 900;
+            color:#fff;
+        }
+        >img{
+            margin:15px 0px;
+            height: 20px;
+            float: right;
+        }
+    }
+}
+/*Ranking模块结束*/
+
+
+
+

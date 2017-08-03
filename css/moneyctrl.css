@@ -1,0 +1,97 @@
+header {
+  font-size: 24px;
+  line-height: 50px;
+}
+header a {
+  color: #fff;
+}
+header a .header_app {
+  margin-top: 8px;
+}
+#moneyctrlList > .recommend-item {
+  border-bottom: 1px solid #E6E6E6;
+  padding: 10px;
+  background-color: #fff;
+  margin-top: 0px;
+}
+#moneyctrlList > .recommend-item > .media-left > a > img {
+  width: 150px;
+}
+#moneyctrlList > .recommend-item > .media-body > a {
+  display: block;
+  position: relative;
+  height: 150px;
+}
+#moneyctrlList > .recommend-item > .media-body > a > h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+#moneyctrlList > .recommend-item > .media-body > a > h4 > span {
+  color: #FF6C00;
+}
+#moneyctrlList > .recommend-item > .media-body > a > .media-from {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: 20px;
+  color: #B2B2B2;
+  padding-right: 20px;
+  height: 30px;
+  line-height: 30px;
+}
+#moneyctrlList > .recommend-item > .media-body > a > .media-from > .from {
+  float: left;
+}
+#moneyctrlList > .recommend-item > .media-body > a > .media-from > .comment {
+  float: right;
+  font-size: 24px;
+}
+#moneyctrlList > .recommend-item > .media-body > a > .media-from > .comment-count {
+  float: right;
+  font-size: 14px;
+}
+#pageDivide {
+  padding: 10px;
+}
+#pageDivide .dropdown {
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#pageDivide .dropdown > a {
+  height: 32px;
+  width: 150px;
+  line-height: 32px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  text-align: center;
+}
+#pageDivide .dropdown > .dropdown-menu {
+  margin-top: 0px;
+  min-width: 150px;
+}
+#pageDivide .dropdown > .dropdown-menu > li {
+  text-align: center;
+  line-height: 24px;
+  border-bottom: 1px solid #ccc;
+}
+#pageDivide .dropdown > .dropdown-menu > li:last-of-type {
+  border: none;
+}
+#pageDivide .dropdown > .dropdown-menu > li:hover {
+  background-color: skyblue;
+}
+#pageDivide > nav > .pager {
+  margin: 0;
+}
+#pageDivide > nav > .pager > li a {
+  border-radius: 5px;
+}
+#pageDivide > nav > .pager > li a:hover,
+#pageDivide > nav > .pager > li afocus {
+  background-color: #fff;
+}

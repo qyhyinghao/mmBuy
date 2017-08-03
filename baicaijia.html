@@ -1,0 +1,173 @@
+	</head>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>国内折扣</title>
+		<!--引入bootstrap的样式文件-->
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+		<!--引入less文件-->
+		<link rel="stylesheet/less" href="css/base.css" />
+		<link rel="stylesheet/less" href="css/moneyctrl.less" />
+		<link rel="stylesheet/less" href="css/inlanddiscount.less" />
+		<link rel="stylesheet/less" href="css/baicaijia.less" />
+		<!--引入less.js文件用于翻译less文件-->
+		<script src="lib/less/less.js"></script>
+		<script src="js/iscroll.js"></script>
+		
+	</head>
+	<body>
+		
+		<!--  ==========  -->
+		<!--  = header模块 =  -->
+		<!--  ==========  -->
+		<header id="top">
+			<a href="index1.html">
+				白菜价
+			</a>
+			<a href="javascript:;">
+				<img src="img/header_app.png" class="header_app" alt="" />
+			</a>
+		</header>
+		<!--  ==========  -->
+		<!--  = 导航栏模块 =  -->
+		<!--  ==========  -->
+		<div id="nav">
+			<ul id='nav-Title' class="clearfix">
+				<li><a href="">全部</a></li>
+			</ul>
+		</div>
+		<!--  ==========  -->
+		<!--  = search模块 =  -->
+		<!--  ==========  -->
+		<div id='baicaijiaProduct'>
+			
+		</div>
+		
+		
+		<!--  = footer模块 =  -->
+		<!--  ==========  -->
+		<footer>
+			<div class="register container-fluid clearfix">
+				<div class="row">
+					<div class="col-xs-4 ">
+						<a href="javascript:;">登录</a>
+					</div>
+					<div class="col-xs-4">
+						<a href="javascript:;">注册</a>
+					</div>
+					<div class="col-xs-4">
+						<a href="#top">
+							<img src="img/top.jpg" alt="" /> 
+							返回顶部
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="app-download">
+				<a href="javascript:;" class="mobileApp">手机APP下载</a>
+				<a href="javascript:;">慢慢买手机版</a>
+				<span>--掌上比价平台</span>
+			</div>
+			<div class="link">
+				<a href="javascript:;">http://m.manmanbuy.com</a>
+			</div>
+		</footer>
+		<!--</body>-->
+		<!--在bootstrap.js之前引入jquery.js,因为bootstrap依赖于jquery库-->
+		<script src="lib/jquery/jquery.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.js"></script>
+		<!--<script src='js/'></script>-->
+		<!--<script src="js/index.js"></script>-->
+		<script src='js/template.js'></script>
+		<script type="text/html" id="baicaijiaTitle">
+			{{each result as value index}}
+				<li><a href="#" data-titleId={{value.titleId}}>{{value.title}}</a></li>
+			{{/each}}
+		</script>
+		<script type="text/html" id="baicaiProduct">
+			{{each result as value index}}
+			<div class="media">
+				<div class="media-left">
+				  <a href="#">
+				    {{#value.productImg}}
+				  </a>
+				</div>
+				<div class="media-body">
+				  <p class="productName">{{#value.productName}}</p>
+				  <p class="productPrice">{{#value.productPrice}}</p>
+				  {{#value.productCouponRemain}}
+				  <p class="productCoupon">{{#value.productCoupon}}</p>
+				  <p class="productHref">{{#value.productHref}}</p>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+		<script type="text/javascript">
+			$(function(){
+				
+				$.ajax({
+					url:'http://182.254.146.100:3000/api/getbaicaijiatitle',
+					success:function(data){
+						console.log(data);
+						var html = template("baicaijiaTitle",data)
+						$("#nav-Title").html(html);
+						var ulWidth = 0;
+						$("#nav-Title").find("li").each(function(i,e){
+//							console.log(i,e);
+							ulWidth += $(this).outerWidth(true);
+						});
+						$("#nav-Title").find("li:eq(0)").addClass('active');
+						
+						$.ajax({
+								url:'http://182.254.146.100:3000/api/getbaicaijiaproduct',
+								data:{titleid :0},
+								success:function(data){
+									console.log(data);
+									var html = template('baicaiProduct',data);
+									$('#baicaijiaProduct').html(html);
+								}
+							});
+						//为所有li添加点击事件
+						$("#nav-Title").find("li").on("click",function  () {
+							$("#nav-Title").find("li").removeClass('active');
+							$(this).addClass('active');
+							
+//							获取对应标题的titleId
+							var titleId = $(this).find('a').attr('data-titleId');
+							console.log(titleId);
+							
+//							点击导航项之后重新进行ajax请求
+							$.ajax({
+								url:'http://182.254.146.100:3000/api/getbaicaijiaproduct',
+								data:{titleid :titleId},
+								success:function(data){
+									console.log(data);
+									var html = template('baicaiProduct',data);
+									$('#baicaijiaProduct').html(html);
+								}
+							});
+						});
+						//设置ul的宽度
+						$("#nav-Title").css("width",ulWidth);
+						
+						//初始化iscroll
+						var myScroll = new IScroll('#nav', {
+						    scrollX: true, 
+						    scrollY: false,
+						    preventDefault:false,
+						    preventDefaultException: { tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT|A)$/ }
+						});
+						
+					
+								
+					}
+				});
+				
+			});
+		</script>
+	</body>
+
+</html>

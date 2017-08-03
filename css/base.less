@@ -1,0 +1,315 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei";
+}
+
+//html,
+//body {
+//  height: 100%;
+//}
+
+ol,
+ul {
+    list-style: none;
+}
+
+input,
+select,
+form images,
+button {
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    outline: 0;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+textarea {
+    width: 95%;
+}
+
+a {
+    color: #000;
+    text-decoration: none !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+a:hover{
+    color: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+img {
+    border: none;
+}
+
+input,
+img {
+    vertical-align: middle;
+}
+
+body {
+    color: #000;
+    font-family: "Microsoft YaHei";
+    background: #FFF;
+    overflow-x: hidden;
+}
+
+body{
+    //background-color:red;
+    background-color: @backgroundColor;
+    min-width: 340px;
+//  height: 3000px;
+}
+@baseColor:#FF841D;
+@backgroundColor:#F2F2F2;
+@borderBottome:1px solid #E6E6E6;
+
+
+// 头部区域
+//#header {
+//  height: 50px;
+//  background-color: #ff841d;
+//  padding: 10px;
+//  >.logo {
+//      margin-left: 5px;
+//      >img {
+//          height: 25px;
+//      }
+//  }
+//  >.app {
+//      float: right;
+//      margin-top: -2px;
+//      >img {
+//          height: 34px;
+//      }
+//  }
+//}
+
+// 搜索区域
+//#search {
+//  background-color: #fff;
+//  padding: 10px;
+//  >form {
+//      padding-right: 70px;
+//      position: relative;
+//      >input[type="search"] {
+//          width: 100%;
+//          height: 30px;
+//          border-radius: 15px;
+//          border: 0;
+//          background-color: #f5f5f5;
+//          padding-left: 15px;
+//      }
+//      >input[type="submit"] {
+//          position: absolute;
+//          right: 0;
+//          top: 0;
+//          width: 63px;
+//          height: 30px;
+//          border-radius: 15px;
+//          background-color: #ff841d;
+//          color: #fff;
+//          border: 0;
+//      }
+//  }
+//}
+
+//#footer {
+//  >.row {
+//      >div {
+//          text-align: center;
+//          border: 1px solid #ccc;
+//          height: 30px;
+//          line-height: 30px;
+//          >a {
+//              >img {
+//                  width: 15px;
+//                  height: 15px;
+//              }
+//          }
+//      }
+//      >div+div {
+//          border-left: 0;
+//      }
+//  }
+//  >p {
+//      margin: 5px 0;
+//      text-align: center;
+//      font-size: 12px;
+//      >a:first-child {
+//          color: red;
+//      }
+//  }
+//}
+
+
+/*header模块开始*/
+header{
+    height:50px;
+    background-color:@baseColor;
+    width:100%;
+    padding:0 20px;
+    a{
+        line-height: 50px;
+        &:first-of-type{
+            float:left;
+            height: 100%;
+        }
+        &:last-of-type{
+            float:right;
+            height: 100%;
+        }
+        >.header_logo{
+            height:25px;
+        }
+        >.header_app{
+            height:34px;
+        }
+        
+    }
+}
+/*header模块结束*/
+
+/*search模块开始*/
+#search{
+    border-bottom: @borderBottome;
+    background-color: #fff;
+    >form{
+        padding-right:80px;
+        padding:10px 80px 10px 10px;
+        position: relative;
+        >input[type="search"]{
+            //margin-right:80px;
+            width:100%;
+            border:none;
+            background-color: #F1F1F1;
+            height: 30px;
+            border-radius:15px;
+            padding-left:20px;
+        }
+        >input[type="submit"]{
+            height:30px;
+            width:60px;
+            border-radius:15px;
+            position: absolute;
+            right:10px;
+            top:10px;
+            border:none;
+            background-color: @baseColor;
+            color:#fff;
+            font-size: 16px;
+            line-height: 30px;
+        }
+    }
+    
+    
+}
+/*search模块结束*/
+
+/*footer模块开始*/
+footer{
+    margin-top: 10px;
+    
+    
+    >.register{
+        font-size: 18px;
+        border-top:@borderBottome;
+        border-bottom: @borderBottome;
+        margin-bottom: 20px;
+        >.row{
+            >div{
+                height:40px;
+                line-height: 40px;
+                text-align: center;
+                >a{
+                    color:#5A5A5A;
+                }
+                &:nth-of-type(2){
+                    border-left:@borderBottome;
+                    border-right:@borderBottome;
+                }
+                &:nth-of-type(3){
+                    img{
+                        width: 22px;
+                        vertical-align: middle;
+                        margin-top: -4px;
+                    }
+                }
+            }
+        }
+    }
+    >.app-download,.link{
+        text-align: center;
+        line-height: 24px;
+        .mobileApp{
+            color:red;
+        }
+        
+        
+    }
+     
+}
+
+/*footer模块结束*/
+
+//  ========== 
+//  = 公共字体 = 
+//  ========== 
+
+@font-face {font-family: "iconfont";
+  src: url('../font/iconfont.eot?t=1500022522599'); /* IE9*/
+  src: url('../font/iconfont.eot?t=1500022522599#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../font/iconfont.woff?t=1500022522599') format('woff'), /* chrome, firefox */
+  url('../font/iconfont.ttf?t=1500022522599') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../font/iconfont.svg?t=1500022522599#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-message:before { content: "\e70c"; }

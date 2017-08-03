@@ -1,0 +1,260 @@
+	</head>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+		<title>省钱控</title>
+		<!--引入bootstrap的样式文件-->
+		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+		<!--引入less文件-->
+		<link rel="stylesheet/less" href="css/base.less" />
+		<link rel="stylesheet/less" href="css/moneyctrl.less" />
+		<!--引入less.js文件用于翻译less文件-->
+		<script src="lib/less/less.js"></script>
+	</head>
+	<body>
+		<!--  ==========  -->
+		<!--  = header模块 =  -->
+		<!--  ==========  -->
+		<header id="top">
+			<a href="index1.html">
+				省钱控
+			</a>
+			<a href="javascript:;">
+				<img src="img/header_app.png" class="header_app" alt="" />
+			</a>
+		</header>
+		<!--  ==========  -->
+		<!--  = search模块 =  -->
+		<!--  ==========  -->
+		<div id='moneyctrlList'>
+			<div class="media recommend-item">
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="img/rec_list1.png" alt="...">
+						</a>
+					</div>
+					<div class="media-body">
+						<a href="javascript:;">
+							<h4 class="media-heading">慢慢买：有我~网购价格不怕7！7周年福利来袭 
+								<span>多重好礼，红包礼包各种包等你来取</span>
+							</h4>
+							<p class="media-from">
+								<span class="from">慢慢买 | 07-13 18:20</span>
+								<span class="comment-count">159</span>
+								<span class="comment iconfont icon-message"></span>
+
+							</p>
+						</a>
+
+					</div>
+				</div>
+		</div>
+		<!--  ==========  -->
+		<!--  = items模块 =  -->
+		<!--  ==========  -->
+		<div class="productList-pageChange " id='pageDivide'>
+			<div class="dropdown">
+				<a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					第一页
+					<span class="caret" pageId='1'></span>
+				</a>
+
+				<ul class="dropdown-menu" aria-labelledby="dLabel">
+					<li>第一页</li>
+					<li>第二页</li>
+					<li>第三页</li>
+					<li>第四页</li>
+				</ul>
+			</div>
+			<nav >
+				<ul class="pager">
+					<li class="previous">
+						<a href="javascript:;"> 上一页</a>
+					</li>
+					<li class="next">
+						<a href="javascript:;">下一页</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!--  ==========  -->
+		<!--  = footer模块 =  -->
+		<!--  ==========  -->
+		<footer>
+			<div class="register container-fluid">
+				<div class="row">
+					<div class="col-xs-4">
+						<a href="javascript:;">登录</a>
+					</div>
+					<div class="col-xs-4">
+						<a href="javascript:;">注册</a>
+					</div>
+					<div class="col-xs-4">
+						<a href="#top">
+							<img src="img/top.jpg" alt="" /> 
+							返回顶部
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="app-download">
+				<a href="javascript:;" class="mobileApp">手机APP下载</a>
+				<a href="javascript:;">慢慢买手机版</a>
+				<span>--掌上比价平台</span>
+			</div>
+			<div class="link">
+				<a href="javascript:;">http://m.manmanbuy.com</a>
+			</div>
+		</footer>
+		<!--在bootstrap.js之前引入jquery.js,因为bootstrap依赖于jquery库-->
+		<script src="lib/jquery/jquery.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.js"></script>
+		<!--<script src='js/'></script>-->
+		<!--<script src="js/index.js"></script>-->
+		<script src='js/template.js'></script>
+		<script type='text/html' id='moneyTemp'>
+			{{if result}}
+			{{each result as value index}}
+			<div class="media recommend-item">
+					<div class="media-left">
+						<a href="moneyproduct.html?productid={{value.productId}}">
+							{{#value.productImgSm}}
+						</a>
+					</div>
+					<div class="media-body">
+						<a href="moneyproduct.html?productid={{value.productId}}">
+							<h4 class="media-heading">{{value.productName}} 
+								<span>{{value.productPinkage}}</span>
+							</h4>
+							<p class="media-from">
+								<span class="from">{{value.productFrom}}</span>
+								<span class="comment-count">{{value.productComCount}}</span>
+								<span class="comment iconfont icon-message"></span>
+
+							</p>
+						</a>
+
+					</div>
+				</div>
+			{{/each}}
+			{{/if}}
+		</script>
+		
+		
+		<script>
+			$(function(){
+			//	$().dropdown('toggle');
+				var pageIndex =['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十'];
+//				console.log(3445);		
+//				var category = getUrlParam("category");
+//				var categoryId = getUrlParam("categoryId");
+//				console.log(category);
+//				console.log(categoryId);
+//				
+//				$('.productList-title li.active>a').text(category);
+				
+				$.ajax({
+					url:'http://182.254.146.100:3000/api/getmoneyctrl',
+					
+					dataType:'json',
+					success:function(data){
+						console.log(data);
+						var html = template('moneyTemp',data);
+						$("#moneyctrlList").html(html);
+						var pageCount  = Math.ceil(data.totalCount/data.pagesize);
+						
+						/*动态生成分页栏*/
+						var html='';
+						
+						for(var i=0;i<pageCount;i++){
+							html += '<li index='+(i+1)+'>第'+pageIndex[i]+'页</li>';
+						}
+						$('.productList-pageChange .dropdown>ul').html(html);
+						var pageId = 0
+						/*获取分页栏所有的li标签*/
+						console.log(pageId);
+						var lis = $('.productList-pageChange .dropdown>ul').find('li');
+						$(".productList-pageChange nav .previous>a").on("click",function(){
+							if(pageId == 0){
+								return;
+							}else{
+								pageId--;
+								console.log(pageId);
+								console.log(pageIndex);
+								console.log(pageIndex[pageId]);
+								$("#dLabel").html('第'+pageIndex[pageId]+'页<span class="caret" pageId='+pageId+'></span>');
+								getproductList(pageId);
+
+							}
+						});
+						
+						$(".productList-pageChange nav .next>a").on("click",function(){
+							if(pageId == pageCount-1){
+								return;
+							}else{
+								pageId++;
+								console.log(pageId);
+								$("#dLabel").html('第'+pageIndex[pageId]+'页<span class="caret" pageId='+pageId+'></span>');
+								getproductList(pageId);
+
+							}
+						});
+						
+						/*为每个li标签添加点击事件*/
+						lis.on('click',function(){
+							pageId = $(this).attr("index");
+							/*根据选中的不同的li标签更新分页框*/
+							$("#dLabel").html($(this).html()+'<span class="caret" pageId='+pageId+'></span>');
+//								console.log($(this).attr("index"));
+//							var pageId = $(this).attr("index");
+							console.log(pageId);
+							
+							/*选中的分页栏后重新请求分页面*/
+							getproductList(pageId);
+							//getproductList(categoryId,pageId);
+							
+
+						});
+					
+						
+					
+					
+					}
+					
+				});
+			});
+			function getproductList(pageId){
+				$.ajax({
+					url:'http://182.254.146.100:3000/api/getmoneyctrl',
+					data:{
+						pageid:pageId
+					},
+					success:function(data){
+						console.log(data);
+						/*根据获取的数据重新生成分类列表*/
+						var html = template('moneyTemp',data);
+						$("#moneyctrlList").html(html);
+						
+					}
+				});
+			}
+			
+			//获取url地址栏参数
+			function getUrlParam(key) {
+			    // 获取参数
+			    var url = window.location.search;
+			    // 正则筛选地址栏
+			    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+			    // 匹配目标参数
+			    var result = url.substr(1).match(reg);
+			    //返回参数值
+			    return result ? decodeURIComponent(result[2]) : null;
+			}
+		</script>
+		
+	</body>
+
+</html>

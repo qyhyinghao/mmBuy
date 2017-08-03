@@ -1,0 +1,56 @@
+#productList .productList-content {
+  margin-top: 10px;
+  padding-top: 10px;
+  background-color: #fff;
+}
+#productList .productList-content > p {
+  text-align: center;
+  font-size: 20px;
+  height: 40px;
+}
+#productList .productList-content > .productImg img {
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+#productList .productList-content .row > div {
+  text-align: center;
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #FF841D;
+}
+#productList .productList-content .row > div:first-of-type {
+  background-color: orange;
+}
+#productList .productList-content .row > div:nth-of-type(2) {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+#productList .product-comment h4 {
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  background-color: green;
+}
+#productList .product-comment > div {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#productList .product-comment > div .item {
+  border-bottom: 1px dashed gray;
+}
+#productList .product-comment > div .item .comTitle {
+  font-size: 16px;
+}
+#productList .product-comment > div .item .comTitle .comName {
+  float: left;
+  line-height: 30px;
+}
+#productList .product-comment > div .item .comTitle .comTime {
+  float: right;
+  line-height: 30px;
+}
+#productList .product-comment > div .item .comContent {
+  text-indent: 2em;
+}
